@@ -21,7 +21,7 @@ export default class GoogleSheetService {
         const sheets = google.sheets({version: 'v4', auth: this.sheetsClient});
         const request = {
             spreadsheetId: body.sheetID,
-            ranges: ['A:Z'],
+            ranges: [body.sheetName+'!A:Z'],
             // auth: this.sheetsClient
         }
 

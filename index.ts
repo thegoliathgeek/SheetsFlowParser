@@ -5,6 +5,6 @@ dotenv.config();
 const sheets = new GoogleSheetService();
 
 sheets.readData({
-    sheetName: '[Halo]_Import_Template_Builder.MH.30112020',
-    sheetID: '1oFzpaHhjP4J0PgFaeMZmk3gl_x9L-tCaa_jOUO6yxO8'
+    sheetName: 'README_Import_Template_Builder_',
+    sheetID: '1r3QRHMhmIuePhWOu8LZ7djkjnWhyqlNqA6vrbL-cAFw'
 });
