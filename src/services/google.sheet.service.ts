@@ -16,12 +16,12 @@ export default class GoogleSheetService {
         });
     }
 
-    async readData(body: { sheetID: string, sheetName: string }) {
+    async readData(body: { sheetID: string, sheetName: string }) : Promise<any> {
 
         const sheets = google.sheets({version: 'v4', auth: this.sheetsClient});
         const request = {
             spreadsheetId: body.sheetID,
-            ranges: [body.sheetName+'!A:Z'],
+            ranges: [body.sheetName + '!A:Z'],
             // auth: this.sheetsClient
         }
 
@@ -30,8 +30,9 @@ export default class GoogleSheetService {
             const response = (await sheets.spreadsheets.values.batchGet(request, {})).data;
             // @ts-ignore
             const rows = response;
-            FileHelper.jsonToFile(rows);
-            return rows;
+            // FileHelper.jsonToFile(rows);
+            // @ts-ignore
+            return rows.valueRanges[0].values;
         } catch (err) {
             throw err;
         }
