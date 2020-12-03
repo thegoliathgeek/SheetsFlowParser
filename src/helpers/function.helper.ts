@@ -18,5 +18,16 @@ export default class FunctionHelper {
             message_type: arr[1].trim()
         }
     }
+
+    static getTrainingPhrases(data: string): { parts: { text: string }[] }[] {
+        const arr = data.split(',');
+        const tempPhrases: { parts: { text: string }[] }[] = [];
+        arr.forEach((val) => {
+            tempPhrases.push({
+                parts: [{text: val}]
+            });
+        });
+        return tempPhrases;
+    }
 }
 
