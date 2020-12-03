@@ -30,7 +30,7 @@ export default class GoogleSheetService {
             const response = (await sheets.spreadsheets.values.batchGet(request, {})).data;
             // @ts-ignore
             const rows = response;
-            FileHelper.jsonToFile(rows, 'storage', 'some.json');
+            FileHelper.jsonToFile(rows);
             return rows;
         } catch (err) {
             throw err;
