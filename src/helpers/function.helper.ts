@@ -29,5 +29,52 @@ export default class FunctionHelper {
         });
         return tempPhrases;
     }
+
+    static canvasAutoArrange(xStart: number = 12, yStart: number = 18, list: any[]) {
+        let maxY = 2000;
+        let maxX = 3000;
+        const incrementX = 435;
+        const incrementY = 70;
+        let startX = -(xStart + 200);
+        let startY = 200;
+        const returnObj: any[] = [];
+        for (const obj of list) {
+            startX += incrementX;
+            if (startX > maxX) {
+                if (startY > maxY) {
+                    maxY += 200;
+                    maxX += 200;
+                }
+                startY += incrementY;
+                startX = xStart;
+            }
+            returnObj.push({
+                ...obj,
+                canvas: {
+                    position: {
+                        x: startX,
+                        y: startY
+                    }
+                }
+            });
+        }
+        return returnObj;
+    }
+
+    static arrangeLookingDeep = (list: any[], newList: any[], tracker: any[], id = "", connect = "") => {
+        if (id === null) {
+            return newList;
+        }
+        for (const obj of list) {
+            if (obj.id === id || id === "") {
+                if (!tracker.includes(obj.id)) {
+                    tracker.push(obj.id);
+                    newList.push(obj);
+                    FunctionHelper.arrangeLookingDeep(list, newList, tracker, obj.connect, connect)
+                }
+            }
+        }
+        return newList;
+    }
 }
 

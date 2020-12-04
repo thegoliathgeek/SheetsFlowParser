@@ -1,7 +1,6 @@
 import {IndexDefinitionConstant} from "../constants/index.definition.constant";
 import {FLOW_CONTAINER} from "../constants/block.schema.constant";
 import FunctionHelper from "../helpers/function.helper";
-import FileHelper from "../helpers/file.helper";
 import BlockBuilderHelper from "../constants/block.builder.helper";
 
 export default class BlockBuilderService {
@@ -40,6 +39,8 @@ export default class BlockBuilderService {
                         }
                     }
                     addedUpdatedHolder.push(flowContainer);
+
+                    // Make connection if exists
                     const mapper = BlockBuilderService.connectionMapper[obj[IndexDefinitionConstant.interaction]];
                     if (mapper) {
                         addedUpdatedHolder[mapper.currentIndex] = {
@@ -66,7 +67,7 @@ export default class BlockBuilderService {
                 }
             }
         })
-        FileHelper.jsonToFile(addedUpdatedHolder);
-        return addedUpdatedHolder;
+        // FileHelper.jsonToFile(FunctionHelper.canvasAutoArrange(250, 130, addedUpdatedHolder));
+        return FunctionHelper.canvasAutoArrange(250, 130, addedUpdatedHolder);
     }
 }
