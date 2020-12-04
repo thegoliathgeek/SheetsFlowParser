@@ -1,6 +1,7 @@
 import GoogleSheetService from "./src/services/google.sheet.service";
 import * as dotenv from 'dotenv';
 import BlockBuilderService from "./src/services/block.builder.service";
+
 dotenv.config();
 
 const sheets = new GoogleSheetService();
@@ -103,7 +104,7 @@ const build = async ()=>{
             "",
             "",
             "",
-            "Super-Powers - Webhooks"
+            "Super Powers - Webhooks"
         ],
         [
             "Good Bye",

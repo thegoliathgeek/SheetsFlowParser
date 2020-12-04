@@ -15,7 +15,7 @@ export default class FunctionHelper {
         }
         return {
             block_type: arr[0].trim(),
-            message_type: arr[1].trim()
+            message_type: arr[arr.length - 1].trim()
         }
     }
 
